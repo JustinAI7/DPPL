@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNORSSG Logistics Portal</title>
+    <title>UNORSSGO Logistics Portal</title>
     <style>
         :root {
             --bg-color: #f3f4f6;
@@ -168,8 +168,15 @@
             margin-bottom: 15px;
         }
 
+        .form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
         @media (max-width: 600px) {
-            .form-row {
+            .form-row, .form-row-3 {
                 grid-template-columns: 1fr;
             }
         }
@@ -229,7 +236,7 @@
             font-weight: normal;
         }
 
-        input[type="text"], input[type="datetime-local"], select, textarea {
+        input[type="text"], input[type="datetime-local"], input[type="time"], select, textarea {
             background-color: var(--input-bg);
             border: 1px solid var(--border-color);
             border-radius: 6px;
@@ -269,6 +276,28 @@
             color: var(--text-muted);
             font-style: italic;
             margin-top: 4px;
+        }
+
+        /* Sub-panel Box for Entry Permit & Gate Pass */
+        .sub-permit-card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sub-permit-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary-navy);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* Accordion Activity Blocks */
@@ -627,21 +656,78 @@
                             <textarea name="Activity_1_Materials" class="activity-materials" rows="2" placeholder="Please specify quantity for each item (e.g., 2 steel frames, 10 monoblock chairs, 1 sound system, 2 wireless microphones, 1 podium)" required></textarea>
                         </div>
 
-                        <div class="form-group">
-                            <div class="label-wrapper">
-                                <label>Entry Permit - Guest List</label>
-                                <span class="tooltip-icon" data-tooltip="Required for outside visitors or Sunday access.">?</span>
+                        <!-- SEPARATED SECTION: ENTRY PERMIT (GUEST LIST) -->
+                        <div class="sub-permit-card">
+                            <div class="sub-permit-title">
+                                🎫 Entry Permit & Guest Access
+                                <span class="tooltip-icon" data-tooltip="Required for outside visitors or Sunday campus access.">?</span>
                             </div>
-                            <textarea name="Activity_1_EntryGuests" class="activity-guests" rows="2" placeholder="List full names of all external guests or attendees requiring entry access..."></textarea>
+
+                            <div class="form-row-3">
+                                <div class="form-group">
+                                    <div class="label-wrapper">
+                                        <label>Guest Access Date(s)</label>
+                                    </div>
+                                    <input type="text" name="Activity_1_GuestDates" placeholder="e.g., July 15-16">
+                                </div>
+                                <div class="form-group">
+                                    <div class="label-wrapper">
+                                        <label>Guest Time In</label>
+                                    </div>
+                                    <input type="time" name="Activity_1_GuestTimeIn">
+                                </div>
+                                <div class="form-group">
+                                    <div class="label-wrapper">
+                                        <label>Guest Time Out</label>
+                                    </div>
+                                    <input type="time" name="Activity_1_GuestTimeOut">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <div class="label-wrapper">
+                                    <label>Guest List / External Visitors</label>
+                                </div>
+                                <textarea name="Activity_1_EntryGuests" class="activity-guests" rows="2" placeholder="List full names of all external guests or non-student attendees requiring entry..."></textarea>
+                            </div>
                         </div>
 
-                        <div class="form-group" style="margin-bottom: 0;">
-                            <div class="label-wrapper">
-                                <label>Gate Pass for Materials</label>
-                                <span class="tooltip-icon" data-tooltip="Specify exact quantity of items brought in/out of campus.">?</span>
+                        <!-- SEPARATED SECTION: GATE PASS FOR MATERIALS -->
+                        <div class="sub-permit-card">
+                            <div class="sub-permit-title">
+                                📦 Gate Pass for Materials
+                                <span class="tooltip-icon" data-tooltip="Required for items/equipment brought into or out of campus.">?</span>
                             </div>
-                            <textarea name="Activity_1_GatePass" class="activity-gatepass" rows="2" placeholder="Please specify quantity for each item brought in/out of campus (e.g., 2 steel frames, 3 costume trunks, 1 sound mixer board, 4 extension cords)"></textarea>
+
+                            <div class="form-row-3">
+                                <div class="form-group">
+                                    <div class="label-wrapper">
+                                        <label>Gate Pass Date(s)</label>
+                                    </div>
+                                    <input type="text" name="Activity_1_GatePassDates" placeholder="e.g., July 15">
+                                </div>
+                                <div class="form-group">
+                                    <div class="label-wrapper">
+                                        <label>Entry / Time In</label>
+                                    </div>
+                                    <input type="time" name="Activity_1_GatePassTimeIn">
+                                </div>
+                                <div class="form-group">
+                                    <div class="label-wrapper">
+                                        <label>Exit / Time Out</label>
+                                    </div>
+                                    <input type="time" name="Activity_1_GatePassTimeOut">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <div class="label-wrapper">
+                                    <label>Gate Pass Items List</label>
+                                </div>
+                                <textarea name="Activity_1_GatePass" class="activity-gatepass" rows="2" placeholder="Specify item names & quantities (e.g., 2 steel frames, 3 costume trunks, 1 sound mixer board, 4 extension cords)"></textarea>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -853,21 +939,78 @@
                     <textarea name="Activity_${activityCount}_Materials" class="activity-materials" rows="2" placeholder="Please specify quantity for each item (e.g., 2 steel frames, 10 monoblock chairs, 1 sound system, 2 wireless microphones, 1 podium)" required></textarea>
                 </div>
 
-                <div class="form-group">
-                    <div class="label-wrapper">
-                        <label>Entry Permit - Guest List</label>
-                        <span class="tooltip-icon" data-tooltip="Required for outside visitors or Sunday access.">?</span>
+                <!-- SEPARATED SECTION: ENTRY PERMIT (GUEST LIST) -->
+                <div class="sub-permit-card">
+                    <div class="sub-permit-title">
+                        🎫 Entry Permit & Guest Access
+                        <span class="tooltip-icon" data-tooltip="Required for outside visitors or Sunday campus access.">?</span>
                     </div>
-                    <textarea name="Activity_${activityCount}_EntryGuests" class="activity-guests" rows="2" placeholder="List full names of all external guests or attendees requiring entry access..."></textarea>
+
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <div class="label-wrapper">
+                                <label>Guest Access Date(s)</label>
+                            </div>
+                            <input type="text" name="Activity_${activityCount}_GuestDates" placeholder="e.g., July 15-16">
+                        </div>
+                        <div class="form-group">
+                            <div class="label-wrapper">
+                                <label>Guest Time In</label>
+                            </div>
+                            <input type="time" name="Activity_${activityCount}_GuestTimeIn">
+                        </div>
+                        <div class="form-group">
+                            <div class="label-wrapper">
+                                <label>Guest Time Out</label>
+                            </div>
+                            <input type="time" name="Activity_${activityCount}_GuestTimeOut">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <div class="label-wrapper">
+                            <label>Guest List / External Visitors</label>
+                        </div>
+                        <textarea name="Activity_${activityCount}_EntryGuests" class="activity-guests" rows="2" placeholder="List full names of all external guests or non-student attendees requiring entry..."></textarea>
+                    </div>
                 </div>
 
-                <div class="form-group" style="margin-bottom: 0;">
-                    <div class="label-wrapper">
-                        <label>Gate Pass for Materials</label>
-                        <span class="tooltip-icon" data-tooltip="Specify exact quantity of items brought in/out of campus.">?</span>
+                <!-- SEPARATED SECTION: GATE PASS FOR MATERIALS -->
+                <div class="sub-permit-card">
+                    <div class="sub-permit-title">
+                        📦 Gate Pass for Materials
+                        <span class="tooltip-icon" data-tooltip="Required for items/equipment brought into or out of campus.">?</span>
                     </div>
-                    <textarea name="Activity_${activityCount}_GatePass" class="activity-gatepass" rows="2" placeholder="Please specify quantity for each item brought in/out of campus (e.g., 2 steel frames, 3 costume trunks, 1 sound mixer board, 4 extension cords)"></textarea>
+
+                    <div class="form-row-3">
+                        <div class="form-group">
+                            <div class="label-wrapper">
+                                <label>Gate Pass Date(s)</label>
+                            </div>
+                            <input type="text" name="Activity_${activityCount}_GatePassDates" placeholder="e.g., July 15">
+                        </div>
+                        <div class="form-group">
+                            <div class="label-wrapper">
+                                <label>Entry / Time In</label>
+                            </div>
+                            <input type="time" name="Activity_${activityCount}_GatePassTimeIn">
+                        </div>
+                        <div class="form-group">
+                            <div class="label-wrapper">
+                                <label>Exit / Time Out</label>
+                            </div>
+                            <input type="time" name="Activity_${activityCount}_GatePassTimeOut">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <div class="label-wrapper">
+                            <label>Gate Pass Items List</label>
+                        </div>
+                        <textarea name="Activity_${activityCount}_GatePass" class="activity-gatepass" rows="2" placeholder="Specify item names & quantities (e.g., 2 steel frames, 3 costume trunks, 1 sound mixer board, 4 extension cords)"></textarea>
+                    </div>
                 </div>
+
             </div>
         `;
         
