@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNORSSG Logistics Portal</title>
+    <title>UNORSSGO Logistics Portal</title>
     <style>
         :root {
             --bg-color: #f3f4f6;
@@ -202,7 +202,6 @@
             color: var(--text-muted);
         }
 
-        /* Tooltip styling */
         .tooltip-icon {
             display: inline-flex;
             align-items: center;
@@ -411,7 +410,6 @@
             flex: 1;
         }
 
-        /* Conditional Section Hidden State */
         .conditional-fields {
             display: none;
             animation: fadeIn 0.3s ease;
@@ -699,6 +697,13 @@
                                 <span class="tooltip-icon" data-tooltip="Required for items/equipment brought into or out of campus.">?</span>
                             </div>
 
+                            <div class="form-group">
+                                <div class="label-wrapper">
+                                    <label>Name of Bearer / Responsible Person</label>
+                                </div>
+                                <input type="text" name="Activity_1_GatePassBearer" placeholder="e.g., Maria Santos (Logistics Head)">
+                            </div>
+
                             <div class="form-row-3">
                                 <div class="form-group">
                                     <div class="label-wrapper">
@@ -980,6 +985,13 @@
                     <div class="sub-permit-title">
                         📦 Gate Pass for Materials
                         <span class="tooltip-icon" data-tooltip="Required for items/equipment brought into or out of campus.">?</span>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="label-wrapper">
+                            <label>Name of Bearer / Responsible Person</label>
+                        </div>
+                        <input type="text" name="Activity_${activityCount}_GatePassBearer" placeholder="e.g., Maria Santos (Logistics Head)">
                     </div>
 
                     <div class="form-row-3">
