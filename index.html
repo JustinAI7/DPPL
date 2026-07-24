@@ -542,7 +542,7 @@
             <input type="hidden" name="from_name" value="UNORSSGO Logistics System">
             <input type="hidden" name="redirect" value="https://web3forms.com/success">
 
-            <!-- Step 1 Header -->
+            <!-- Step 1 Header (STILL REQUIRED) -->
             <h2 class="section-title">
                 <span class="section-header-badge">1</span> Compliance Information
             </h2>
@@ -566,7 +566,7 @@
                 </div>
             </div>
 
-            <!-- Step 2 Header -->
+            <!-- Step 2 Header (ALL OPTIONAL) -->
             <h2 class="section-title">
                 <span class="section-header-badge">2</span> Event Overview & Activity Schedules
             </h2>
@@ -582,23 +582,24 @@
                     <div class="activity-body">
                         <div class="form-group">
                             <div class="label-wrapper">
-                                <label>Event / Activity Title *</label>
+                                <label>Event / Activity Title</label>
                             </div>
-                            <input type="text" name="Activity_1_Title" class="activity-event-title" placeholder="Enter official title for this activity" oninput="updateActivityTitle(1, this.value)" required>
+                            <input type="text" name="Activity_1_Title" class="activity-event-title" placeholder="Enter official title for this activity" oninput="updateActivityTitle(1, this.value)">
                         </div>
 
                         <div class="form-group">
                             <div class="label-wrapper">
-                                <label>Event Description / Rationale *</label>
+                                <label>Event Description / Rationale</label>
                             </div>
-                            <textarea name="Activity_1_Description" class="activity-event-desc" rows="2" placeholder="Briefly describe the purpose and objective of this activity..." required></textarea>
+                            <textarea name="Activity_1_Description" class="activity-event-desc" rows="2" placeholder="Briefly describe the purpose and objective of this activity..."></textarea>
                         </div>
                         
                         <div class="form-group">
                             <div class="label-wrapper">
-                                <label>Activity Type *</label>
+                                <label>Activity Type</label>
                             </div>
-                            <select name="Activity_1_Type" class="activity-type" required>
+                            <select name="Activity_1_Type" class="activity-type">
+                                <option value="" disabled selected>Select activity type...</option>
                                 <option value="Official Event Proper">Official Event Proper</option>
                                 <option value="Rehearsal / Technical Run">Rehearsal / Technical Run</option>
                                 <option value="Setup / Ingress">Setup / Ingress</option>
@@ -607,11 +608,11 @@
 
                         <div class="form-group">
                             <div class="label-wrapper">
-                                <label>Date(s) & Time(s) *</label>
+                                <label>Date(s) & Time(s)</label>
                             </div>
                             <div class="datetime-container" id="datetime_container_1">
                                 <div class="datetime-row">
-                                    <input type="datetime-local" name="Activity_1_DateTime[]" class="activity-datetime" required>
+                                    <input type="datetime-local" name="Activity_1_DateTime[]" class="activity-datetime">
                                 </div>
                             </div>
                             <button type="button" class="add-datetime-btn" onclick="addDateTimeRow('datetime_container_1', 1)">+ Add Date & Time</button>
@@ -619,10 +620,10 @@
 
                         <div class="form-group">
                             <div class="label-wrapper">
-                                <label>Venue Location *</label>
+                                <label>Venue Location</label>
                                 <span class="tooltip-icon" data-tooltip="Property venues require a permit letter. IMC venues do not.">?</span>
                             </div>
-                            <select name="Activity_1_Venue" class="activity-venue" required>
+                            <select name="Activity_1_Venue" class="activity-venue">
                                 <option value="" disabled selected>Select campus venue...</option>
                                 <option value="University Gym (Property - Letter Required)">University Gym</option>
                                 <option value="University Lobby (Property - Letter Required)">University Lobby</option>
@@ -646,10 +647,10 @@
 
                         <div class="form-group">
                             <div class="label-wrapper">
-                                <label>Materials Needed for Activity *</label>
+                                <label>Materials Needed for Activity</label>
                                 <span class="tooltip-icon" data-tooltip="Please specify exact item names and quantities.">?</span>
                             </div>
-                            <textarea name="Activity_1_Materials" class="activity-materials" rows="2" placeholder="Please specify quantity for each item (e.g., 2 steel frames, 10 monoblock chairs, 1 sound system, 2 wireless microphones, 1 podium)" required></textarea>
+                            <textarea name="Activity_1_Materials" class="activity-materials" rows="2" placeholder="Please specify quantity for each item (e.g., 2 steel frames, 10 monoblock chairs, 1 sound system, 2 wireless microphones, 1 podium)"></textarea>
                         </div>
 
                         <!-- SEPARATED SECTION: ENTRY PERMIT (GUEST LIST) -->
@@ -755,7 +756,7 @@
             <div id="extensionFields" class="conditional-fields">
                 <div class="form-group">
                     <div class="label-wrapper">
-                        <label for="extensionReason">Reason for Extension *</label>
+                        <label for="extensionReason">Reason for Extension</label>
                     </div>
                     <input type="text" id="extensionReason" name="Reason for Office Extension" placeholder="Specify reason (e.g., Event Prep, Ingress)">
                 </div>
@@ -763,13 +764,13 @@
                 <div class="form-row">
                     <div class="form-group">
                         <div class="label-wrapper">
-                            <label for="extensionDates">Extension Date(s) *</label>
+                            <label for="extensionDates">Extension Date(s)</label>
                         </div>
                         <input type="text" id="extensionDates" name="Extension Dates" placeholder="e.g., June 12-19">
                     </div>
                     <div class="form-group">
                         <div class="label-wrapper">
-                            <label for="extensionUntilTime">Until What Time? *</label>
+                            <label for="extensionUntilTime">Until What Time?</label>
                         </div>
                         <input type="text" id="extensionUntilTime" name="Extension Until What Time" placeholder="e.g., 10:00 PM / 11:30 PM">
                     </div>
@@ -824,20 +825,10 @@
 
     function toggleExtensionFields(value) {
         const extensionFields = document.getElementById('extensionFields');
-        const reasonInput = document.getElementById('extensionReason');
-        const datesInput = document.getElementById('extensionDates');
-        const timeInput = document.getElementById('extensionUntilTime');
-
         if (value === 'Yes') {
             extensionFields.classList.add('active');
-            reasonInput.setAttribute('required', 'required');
-            datesInput.setAttribute('required', 'required');
-            timeInput.setAttribute('required', 'required');
         } else {
             extensionFields.classList.remove('active');
-            reasonInput.removeAttribute('required');
-            datesInput.removeAttribute('required');
-            timeInput.removeAttribute('required');
         }
     }
 
@@ -846,7 +837,7 @@
         const row = document.createElement('div');
         row.className = 'datetime-row';
         row.innerHTML = `
-            <input type="datetime-local" name="Activity_${actNum}_DateTime[]" class="activity-datetime" required>
+            <input type="datetime-local" name="Activity_${actNum}_DateTime[]" class="activity-datetime">
             <button type="button" class="remove-btn" onclick="this.parentElement.remove()">Remove</button>
         `;
         container.appendChild(row);
@@ -872,23 +863,24 @@
             <div class="activity-body">
                 <div class="form-group">
                     <div class="label-wrapper">
-                        <label>Event / Activity Title *</label>
+                        <label>Event / Activity Title</label>
                     </div>
-                    <input type="text" name="Activity_${activityCount}_Title" class="activity-event-title" placeholder="Enter official title for this activity" oninput="updateActivityTitle(${activityCount}, this.value)" required>
+                    <input type="text" name="Activity_${activityCount}_Title" class="activity-event-title" placeholder="Enter official title for this activity" oninput="updateActivityTitle(${activityCount}, this.value)">
                 </div>
 
                 <div class="form-group">
                     <div class="label-wrapper">
-                        <label>Event Description / Rationale *</label>
+                        <label>Event Description / Rationale</label>
                     </div>
-                    <textarea name="Activity_${activityCount}_Description" class="activity-event-desc" rows="2" placeholder="Briefly describe the purpose and objective of this activity..." required></textarea>
+                    <textarea name="Activity_${activityCount}_Description" class="activity-event-desc" rows="2" placeholder="Briefly describe the purpose and objective of this activity..."></textarea>
                 </div>
                 
                 <div class="form-group">
                     <div class="label-wrapper">
-                        <label>Activity Type *</label>
+                        <label>Activity Type</label>
                     </div>
-                    <select name="Activity_${activityCount}_Type" class="activity-type" required>
+                    <select name="Activity_${activityCount}_Type" class="activity-type">
+                        <option value="" disabled selected>Select activity type...</option>
                         <option value="Official Event Proper">Official Event Proper</option>
                         <option value="Rehearsal / Technical Run">Rehearsal / Technical Run</option>
                         <option value="Setup / Ingress">Setup / Ingress</option>
@@ -897,11 +889,11 @@
 
                 <div class="form-group">
                     <div class="label-wrapper">
-                        <label>Date(s) & Time(s) *</label>
+                        <label>Date(s) & Time(s)</label>
                     </div>
                     <div class="datetime-container" id="datetime_container_${activityCount}">
                         <div class="datetime-row">
-                            <input type="datetime-local" name="Activity_${activityCount}_DateTime[]" class="activity-datetime" required>
+                            <input type="datetime-local" name="Activity_${activityCount}_DateTime[]" class="activity-datetime">
                         </div>
                     </div>
                     <button type="button" class="add-datetime-btn" onclick="addDateTimeRow('datetime_container_${activityCount}', ${activityCount})">+ Add Date & Time</button>
@@ -909,10 +901,10 @@
 
                 <div class="form-group">
                     <div class="label-wrapper">
-                        <label>Venue Location *</label>
+                        <label>Venue Location</label>
                         <span class="tooltip-icon" data-tooltip="Property venues require a permit letter. IMC venues do not.">?</span>
                     </div>
-                    <select name="Activity_${activityCount}_Venue" class="activity-venue" required>
+                    <select name="Activity_${activityCount}_Venue" class="activity-venue">
                         <option value="" disabled selected>Select campus venue...</option>
                         <option value="University Gym (Property - Letter Required)">University Gym</option>
                         <option value="University Lobby (Property - Letter Required)">University Lobby</option>
@@ -936,10 +928,10 @@
 
                 <div class="form-group">
                     <div class="label-wrapper">
-                        <label>Materials Needed for Activity *</label>
+                        <label>Materials Needed for Activity</label>
                         <span class="tooltip-icon" data-tooltip="Please specify exact item names and quantities.">?</span>
                     </div>
-                    <textarea name="Activity_${activityCount}_Materials" class="activity-materials" rows="2" placeholder="Please specify quantity for each item (e.g., 2 steel frames, 10 monoblock chairs, 1 sound system, 2 wireless microphones, 1 podium)" required></textarea>
+                    <textarea name="Activity_${activityCount}_Materials" class="activity-materials" rows="2" placeholder="Please specify quantity for each item (e.g., 2 steel frames, 10 monoblock chairs, 1 sound system, 2 wireless microphones, 1 podium)"></textarea>
                 </div>
 
                 <!-- SEPARATED SECTION: ENTRY PERMIT (GUEST LIST) -->
