@@ -515,7 +515,7 @@
         <img src="dppl_2.jpg" alt="DPPL UNORSSGO Logo" class="dppl-header-logo">
         <div class="header-title">
             <h1>Department of Physical Projects & Logistics</h1>
-            <p>UNORSSGO Digital Logistics Portal</p>
+            <p>UNORSSG Digital Logistics Portal</p>
         </div>
     </div>
 </header>
@@ -538,8 +538,8 @@
 
         <form action="https://api.web3forms.com/submit" method="POST" id="submissionForm">
             <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-            <input type="hidden" name="subject" value="New Integrated UNORSSGO Activity & Logistics Compliance">
-            <input type="hidden" name="from_name" value="UNORSSGO Logistics System">
+            <input type="hidden" name="subject" value="New Integrated UNORSSG Activity & Logistics Compliance">
+            <input type="hidden" name="from_name" value="UNORSSG Logistics System">
             <input type="hidden" name="redirect" value="https://web3forms.com/success">
 
             <!-- Step 1 Header (STILL REQUIRED) -->
@@ -551,14 +551,14 @@
                     <div class="label-wrapper">
                         <label for="fullNamePosition">Full Name - Position *</label>
                     </div>
-                    <input type="text" id="fullNamePosition" name="Complied By (Full Name - Position)" placeholder="e.g., Juan Dela Cruz - President" required>
+                    <input type="text" id="fullNamePosition" name="Complied By (Full Name - Position)" placeholder="e.g., Justin Gabriel A. Nanquil - DPPL Secretary" required>
                 </div>
                 <div class="form-group">
                     <div class="label-wrapper">
-                        <label for="department">UNORSSGO Branch *</label>
+                        <label for="department">UNORSSG Branch *</label>
                     </div>
                     <select id="department" name="UNORSSGO Branch" required>
-                        <option value="" disabled selected>Select UNORSSGO branch...</option>
+                        <option value="" disabled selected>Select UNORSSG branch...</option>
                         <option value="Executive Branch">Executive Branch</option>
                         <option value="Legislative Branch">Legislative Branch</option>
                         <option value="Judiciary Branch">Judiciary Branch</option>
@@ -660,6 +660,21 @@
                                 <span class="tooltip-icon" data-tooltip="Required for outside visitors or Sunday campus access.">?</span>
                             </div>
 
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <div class="label-wrapper">
+                                        <label>Facilities to be Used</label>
+                                    </div>
+                                    <input type="text" name="Activity_1_EntryFacilities" placeholder="e.g., University Gym, Main Lobby">
+                                </div>
+                                <div class="form-group">
+                                    <div class="label-wrapper">
+                                        <label>Activity Purpose</label>
+                                    </div>
+                                    <input type="text" name="Activity_1_EntryPurpose" placeholder="e.g., Stage rehearsal, Guest lectures">
+                                </div>
+                            </div>
+
                             <div class="form-row-3">
                                 <div class="form-group">
                                     <div class="label-wrapper">
@@ -694,6 +709,21 @@
                             <div class="sub-permit-title">
                                 📦 Gate Pass for Materials
                                 <span class="tooltip-icon" data-tooltip="Required for items/equipment brought into or out of campus.">?</span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <div class="label-wrapper">
+                                        <label>Facilities to be Used</label>
+                                    </div>
+                                    <input type="text" name="Activity_1_GatePassFacilities" placeholder="e.g., Main Gate, Storage Room A">
+                                </div>
+                                <div class="form-group">
+                                    <div class="label-wrapper">
+                                        <label>Activity Purpose</label>
+                                    </div>
+                                    <input type="text" name="Activity_1_GatePassPurpose" placeholder="e.g., Transporting sound equipment for setup">
+                                </div>
                             </div>
 
                             <div class="form-row-3">
@@ -941,6 +971,21 @@
                         <span class="tooltip-icon" data-tooltip="Required for outside visitors or Sunday campus access.">?</span>
                     </div>
 
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="label-wrapper">
+                                <label>Facilities to be Used</label>
+                            </div>
+                            <input type="text" name="Activity_${activityCount}_EntryFacilities" placeholder="e.g., University Gym, Main Lobby">
+                        </div>
+                        <div class="form-group">
+                            <div class="label-wrapper">
+                                <label>Activity Purpose</label>
+                            </div>
+                            <input type="text" name="Activity_${activityCount}_EntryPurpose" placeholder="e.g., Stage rehearsal, Guest lectures">
+                        </div>
+                    </div>
+
                     <div class="form-row-3">
                         <div class="form-group">
                             <div class="label-wrapper">
@@ -975,6 +1020,21 @@
                     <div class="sub-permit-title">
                         📦 Gate Pass for Materials
                         <span class="tooltip-icon" data-tooltip="Required for items/equipment brought into or out of campus.">?</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="label-wrapper">
+                                <label>Facilities to be Used</label>
+                            </div>
+                            <input type="text" name="Activity_${activityCount}_GatePassFacilities" placeholder="e.g., Main Gate, Storage Room A">
+                        </div>
+                        <div class="form-group">
+                            <div class="label-wrapper">
+                                <label>Activity Purpose</label>
+                            </div>
+                            <input type="text" name="Activity_${activityCount}_GatePassPurpose" placeholder="e.g., Transporting sound equipment for setup">
+                        </div>
                     </div>
 
                     <div class="form-row-3">
